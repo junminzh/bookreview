@@ -1,9 +1,10 @@
 {% extends 'bookreview_app/base_template.html' %}
 
 {% block content %}
-<h1 class="text-success">&nbsp Book List</h1>
+{% comment %} <div class="container-fluid"> {% endcomment %}
+<h1 class="text-success">Book List</h1>
 <!--add a button to create a new book-->
-&nbsp <a class="btn btn-primary" href="{% url 'create_book' %}" role="button">Add a Book</a>
+<a class="btn btn-primary" href="{% url 'create_book' %}" role="button">Add a Book</a>
 
 {% if book_list %}
 <ul>
@@ -16,30 +17,6 @@
 {% else %}
 <p>There are no books added yet.</p>
 {% endif %}
+
+{% comment %} <div> {% endcomment %}
 {% endblock %}
-
-
-
-
-
-
-{% comment %} <!-- inherit from base.html-->
-{% extends "portfolio_app/base_template.html" %}
-
-<!-- Replace block content in base_template.html -->
-{% block content %}
-
-<h1>Computer Science Student Portfolios</h1>
-
-<h2>List of Students with Active Portfolios</h2>
-<ul class="list-group">
-{% for i in student_active_portfolios %}
-<li class="list-group-item">Name: {{i.name}}
-<p><strong>Portfolio: {{ i.portfolio.title }}</strong>
-<a class="btn btn-primary" href="{{ i.portfolio.get_absolute_url }}" role="button">View</a>
-</p>
-</li>
-{% endfor %}
-</ul>
-
-{% endblock %} {% endcomment %}

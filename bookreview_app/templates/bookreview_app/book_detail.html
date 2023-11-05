@@ -1,22 +1,20 @@
 {% extends 'bookreview_app/base_template.html' %}
 
 {% block content %}
-<h1>Book Title: {{ book.title }}</h1>
 
+{% comment %} <div class="container-fluid"> {% endcomment %}
+<h1>Book Title: {{ book.title }}</h1>
 <p><strong>Author:</strong> {{ book.author }}</p>
 <p><strong>Genre:</strong> {{ book.genre }}</p>
 <p><strong>Description:</strong> {{ book.description }}</p>
-{% comment %} <p><strong>Description:</strong> <a href="{{ student.portfolio.get_absolute_url }}">{{ student.portfolio.title }} </a>
-    &nbsp&nbsp <a class="btn btn-primary" href="{% url 'update_portfolio' student.portfolio.id %}"role="button">update</a>
-</p> {% endcomment %}
 
-<!--add buttons for viewing, updating, and deleting the detail of the project-->
+<!--add buttons for updating, deleting the detail and viewing reviews of the project-->
 <div>
-&nbsp&nbsp <a class="btn btn-primary" href="{% url 'update_book' book.id %}"role="button">Edit</a>
+<a class="btn btn-primary" href="{% url 'update_book' book.id %}"role="button">Edit</a>
 &nbsp&nbsp <a class="btn btn-danger" href="{% url 'delete_book' book.id %}"role="button">Delete</a>
-{% comment %} &nbsp&nbsp <a class="btn btn-primary" href="{{ project.get_absolute_url }}"role="button">Reviews</a> {% endcomment %}
 &nbsp&nbsp <a class="btn btn-primary" href=""role="button">Reviews</a>
 </div>
+{% comment %} </div> {% endcomment %}
 {% endblock %}
 
 
