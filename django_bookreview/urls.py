@@ -22,3 +22,8 @@ urlpatterns = [
     #connect path to portfolio_app urls
     path('', include('bookreview_app.urls')),
 ]
+
+# Add Django site authentication urls (for login, logout, password management)
+urlpatterns += [
+    path('accounts/', include('django.contrib.auth.urls')),
+]
