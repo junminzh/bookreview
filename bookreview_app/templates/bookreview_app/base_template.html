@@ -28,7 +28,7 @@ aria-expanded="false" aria-label="Toggle navigation">
 
 <!--Sidebar to display a "Login" link if the user is logged out, and a "Logout" link if they are logged in-->
 {% if user.is_authenticated %}
-    <p>&nbsp&nbsp User: {{ user.get_username }} &nbsp&nbsp</p>
+    <p>&nbsp&nbsp Hi, <b>{{ user.get_username }}</b>! &nbsp&nbsp</p>
     <a class="nav-link, text-dark" href="{% url 'logout' %}">Logout</a>
 {% else %}
     &nbsp&nbsp<a class="nav-link, text-dark" href="{% url 'login' %}?next={{ request.path }}">Login</a>
