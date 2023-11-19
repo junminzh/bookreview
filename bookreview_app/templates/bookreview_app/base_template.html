@@ -15,7 +15,7 @@
 <div class="container-fluid">
 <nav class="navbar navbar-expand-lg navbar-light bg-light lead">
 {% comment %} <img src="{% static 'images/uccs_logo.gif' %}" /> {% endcomment %}
-<div class="container-fluid">
+<!-- <div class="container-fluid"> -->
 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
 aria-expanded="false" aria-label="Toggle navigation">
@@ -23,12 +23,20 @@ aria-expanded="false" aria-label="Toggle navigation">
 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 <div class="navbar-nav">
 <a class="nav-link, text-dark" href="{% url 'index' %}">Home</a>&nbsp&nbsp
-{% comment %} <a class="nav-link" href="{% url 'students' %}">Students</a> {% endcomment %}
 <a class="nav-link, text-dark" href="{% url 'books' %}">Books</a>&nbsp&nbsp
-<a class="nav-link, text-dark" href="">Genre</a>
+<a class="nav-link, text-dark" href="">Genre</a>&nbsp&nbsp
+
+<!--Sidebar to display a "Login" link if the user is logged out, and a "Logout" link if they are logged in-->
+{% if user.is_authenticated %}
+    <p>&nbsp&nbsp User: {{ user.get_username }} &nbsp&nbsp</p>
+    <a class="nav-link, text-dark" href="{% url 'logout' %}">Logout</a>
+{% else %}
+    &nbsp&nbsp<a class="nav-link, text-dark" href="{% url 'login' %}?next={{ request.path }}">Login</a>
+{% endif %}
+
 </div>
 </div>
-</div>
+<!-- </div> -->
 </nav>
 
 <!-- add block content from html template -->
