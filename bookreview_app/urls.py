@@ -22,4 +22,6 @@ path('update_book/<int:pk>', views.updateBook, name='update_book'),
 #path to delete a book
 path('delete_book/<int:pk>/', views.deleteBook, name='delete_book'),
 
+#path to register
+path('accounts/register/', views.registerPage, name = 'register_page'),
 ]
