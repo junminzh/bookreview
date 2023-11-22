@@ -3,7 +3,7 @@
 {% block content %}
 
   {% if form.errors %}
-    <p>Your username and password didn't match. Please try again.</p>
+    <p class="text-danger" id="message">Your username and password didn't match. Please try again.</p>
   {% endif %}
 
   {% if next %}
@@ -33,7 +33,7 @@
               <td>{{ form.password }}</td>
             </tr>
           </table>
-          <input type="submit" value="Log In">
+          <input type="submit" name="login" value="Log In">
           {% if next != "/accounts/logout/" %}
             <input type="hidden" name="next" value="{{ next }}">
           {% endif %} 
