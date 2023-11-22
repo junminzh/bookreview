@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
-from .models import Book
+from bookreview_app.models import Book
 
 
 # setUpTestData() lets us create initial data once, at the class level,
@@ -10,7 +10,7 @@ from .models import Book
 class BookTests(TestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.book = Book.objects.create(title="Designing Data Structures in Java", 
+        cls.post = Book.objects.create(title="Designing Data Structures in Java", 
                                        author="Albert A. Brouillette",
                                        genre="Narrative",
                                        description="A Software Engineering Approach")
@@ -35,8 +35,6 @@ class BookTests(TestCase):
     def test_homepage(self):
         response = self.client.get(reverse("books"))
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "bookreview_app/book_list.html")
-        # print("test_homepage Response:")
-        # print(response)
+        self.assertTemplateUsed(response, "bookreview_app/templates/bookreview_app/book_list.html")
         self.assertContains(response, "Designing Data Structures in Java")
         

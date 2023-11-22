@@ -10,3 +10,4 @@ sqlparse==0.4.4
 tzdata==2023.3
 virtualenv==20.24.5
 virtualenvwrapper-win==1.2.7
+selenium==4.15.2
