@@ -47,7 +47,6 @@ class BookTests(TestCase):
         print("Test Case - test_homepage - Passed!")
 
 
-'''
     # selenium webdriver test - login passed
     def test_login_passed(self):
         driver = webdriver.Chrome()
@@ -96,5 +95,4 @@ class BookTests(TestCase):
         self.assertEqual(value, "Your username and password didn't match. Please try again.")
         print("Test Case - test_login_failed - Passed!")
         driver.quit()
-'''
 

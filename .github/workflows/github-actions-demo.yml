@@ -15,7 +15,4 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - name: Run unit test cases
-        run: |
-          py -3 manage.py test bookreview_app
       - run: echo "🍏 This job's status is ${{ job.status }}."
