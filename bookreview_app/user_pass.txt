@@ -1,0 +1,6 @@
+admin: adm_pass
+reader1: rd1_pass
+reader2: rd2_pass
+reader3: rd3_pass
+reviewer1: rw1_pass
+reviewer2: rw2_pass

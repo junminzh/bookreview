@@ -1,9 +1,12 @@
+from django.contrib.auth.models import Group
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Book
 from django.views import generic
-from .forms import BookForm
+from .forms import BookForm, CreateUserForm
 from django.contrib import messages
+from .decorators import allowed_users
 
 # Create your views here.
 def index(request):
@@ -15,6 +18,8 @@ class BookListView(generic.ListView):
 class BookDetailView(generic.DetailView):
     model = Book
 
+@login_required
+@allowed_users(allowed_roles=['Reviewers'])
 def createBook(request):
     form = BookForm()
     if request.method == 'POST':
@@ -31,6 +36,8 @@ def createBook(request):
     context = {'form': form}
     return render(request, 'bookreview_app/book_form.html', context) 
 
+@login_required
+@allowed_users(allowed_roles=['Reviewers'])
 def updateBook(request, pk):
     book = Book.objects.get(id=pk)
     form = BookForm(instance=book)
@@ -48,6 +55,8 @@ def updateBook(request, pk):
     return render(request, 'bookreview_app/book_form.html', context) 
 
 
+@login_required
+@allowed_users(allowed_roles=['Reviewers'])
 def deleteBook(request, pk):
     book = Book.objects.get(id=pk)
     if request.method == "POST":
@@ -58,3 +67,19 @@ def deleteBook(request, pk):
     
     context = {'item': book}
     return render(request, 'bookreview_app/book_delete.html', context)   
+
+
+def registerPage(request):
+    form = CreateUserForm()
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid(): 
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            group = Group.objects.get(name='Reviewers')
+            user.groups.add(group)
+            messages.success(request, 'Account was created for' + username)
+            return redirect('login')
+    
+    context = {'form':form}
+    return render(request, 'registration/register.html', context)
