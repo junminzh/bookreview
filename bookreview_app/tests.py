@@ -32,12 +32,12 @@ class BookTests(TestCase):
         self.assertEqual(response.status_code, 200)
         print("Test Case - test_url_exists_at_correct_location - Passed!")
 
-    # TODO:change the func name
+    
     # Uses reverse to call the URL name,
     # Check for an HTTP 200 Response,
     # Verify the correct template is used, and
     # Confirm that HTML content matches what is expected.
-    def test_homepage(self):
+    def test_listpage(self):
         response = self.client.get(reverse("books"))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "bookreview_app/book_list.html")
