@@ -44,7 +44,7 @@ class BookTests(TestCase):
         # print("test_homepage Response:")
         # print(response)
         self.assertContains(response, "Designing Data Structures in Java")
-        print("Test Case - test_homepage - Passed!")
+        print("Test Case - test_listpage - Passed!")
 
 
     # selenium webdriver test - login passed
